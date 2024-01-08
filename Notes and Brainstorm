@@ -1,0 +1,11 @@
+Plan to write chirper code,chirpSubmitted(setChirp)
+
+
+Somehow I have to send the the chirp I want to submit into either a map or maybe theres a simplier way to just send the description to the other dom element intstantly 
+
+o
+
+the use of map is necessary to collect and then display the chir
+
+
+Most of the logic will be in the click event listener I believe, I'll ask Andrew if it's necessary to have an actionable function on the onChange, properties when creating an input.
