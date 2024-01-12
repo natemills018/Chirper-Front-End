@@ -5,7 +5,7 @@ import './styles.css';
 const App = () => {
 
     const [chirp, setChirp] = useState('')
-    const [chirpSubmitted, setchirpSubmitted] = useState([])
+    const [chirps, setChirps] = useState([])
     const [userName, setUsername] = useState('');
     const [userNameSubmitted, setuserNameSubmitted] = useState([])
     const [loaded, setloaded] = useState(false);
@@ -23,10 +23,10 @@ const App = () => {
     const handleButtonClick = (e) => {
 
         e.preventDefault();
-        const updateArry = [...chirpSubmitted, chirp];
-        const updateUsernames = [...userNameSubmitted, userName];
-        setchirpSubmitted(updateArry);
-        setuserNameSubmitted(updateUsernames);
+
+        const updateChirps = [{ chirp: chirp, userName: userName }, ...chirps];
+        setChirps(updateChirps);
+
         setChirp('');
         setUsername('');
 
@@ -69,22 +69,15 @@ const App = () => {
                 <div className='card chirpHolder'>
                     <div className='card-body'>
 
-                        {userNameSubmitted.map((userName) => (
-                            <div className='userNameStyles' key={`div-${userName}`}>@
-                                {userName}
-                                {/* {chirpSubmitted.map((chirp) => (
-                                    <div className='chirpStyles' key={`div-${chirp}`}>
-                                        {chirp}
-                                    </div>
-                                ))} */}
 
+                        {chirps.map((chirpObject) => (
+                            <div className="userNameStyles" key={`div-${chirpObject.userName}`}>
+                                <div className="card-title">
+                                    <h1>@{chirpObject.userName}</h1>
+                                </div>
+                                <em>{chirpObject.chirp}</em>
                             </div>
                         ))}
-                        {chirpSubmitted.map((chirp) => (
-                                <div className='chirpStyles' key={`div-${chirp}`}>
-                                    {chirp}
-                                </div>
-                            ))}
 
                     </div>
                 </div>
